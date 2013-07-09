@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['enviar'])){
+if(isset($_POST['editar'])){
     $nome_evento = $_POST['nome_evento'];
     $data_inicio = $_POST['data_inicio'];
     $data_fim = $_POST['data_fim'];
