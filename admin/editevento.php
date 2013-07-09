@@ -101,7 +101,7 @@ if(isset($_POST['editar'])){
 
 <div class="controls-row">
 	<div class="span2">
-<input type="submit" value="Enviar" class="btn btn-primary" name="enviar" formmethod="post"/>
+<input type="submit" value="Enviar" class="btn btn-primary" name="editar" formmethod="post"/>
 	</div>
 </div>  <!-- controls-row -->
 </fieldset>
