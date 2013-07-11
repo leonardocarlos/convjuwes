@@ -33,7 +33,7 @@
                        <li><a href="#">Confirmar Pagamento</a></li>
                     </ul>
                   </li>                    
-                  <li class="dropdown">
+<!--                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                      <i class="icon-list-alt icon-white"></i> Relat&oacute;rios
                       <b class="caret"></b>
@@ -53,7 +53,7 @@
                        <li><a href="?p=cadevento">Cadastrar Evento</a></li>
                        <li><a href="?p=listarevento">Listar Evento</a></li>
                     </ul>
-                  </li>
+                  </li>-->
                       </ul>
                       <div class="pull-right">
                         <ul class="nav pull-right">
