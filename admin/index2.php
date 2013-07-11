@@ -60,15 +60,25 @@ if(!isset($_SESSION['SSusuario_id']) or ($_SESSION['SSnivel']!= $nivel_necessari
 
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="icon-user icon-white"></i> Participantes
+                      <i class="icon-user icon-white"></i> Usuários
                       <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-	               <li><a href="?p=inscricoes">Inscrever Participante</a></li>
-                       <li><a href="?p=listarparticipantes">Listar Participantes</a></li>
-                       <li><a href="?p=confirma_pagamento">Confirmar Pagamento</a></li>
+	               <li><a href="?p=../cadastro">Cadastrar Usário</a></li>
+                       <li><a href="?p=listarparticipantes">Listar Usuário</a></li>
+                       <li><a href="?p=buscausuario">Buscar Usuário</a></li>
                     </ul>
                   </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                     <i class="icon-shopping-cart icon-white"></i> Inscrições
+                      <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                       <li><a href="#">Listar Inscritos</a></li>
+                       <li><a href="#">Confirmar Pagamento</a></li>
+                    </ul>
+                  </li>                  
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                      <i class="icon-list-alt icon-white"></i> Relat&oacute;rios

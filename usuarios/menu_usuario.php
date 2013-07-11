@@ -25,6 +25,16 @@
                   </li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                     <i class="icon-shopping-cart icon-white"></i> Inscrições
+                      <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                       <li><a href="?p=fazer_inscricao">Fazer Inscrição</a></li>
+                       <li><a href="#">Confirmar Pagamento</a></li>
+                    </ul>
+                  </li>                    
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                      <i class="icon-list-alt icon-white"></i> Relat&oacute;rios
                       <b class="caret"></b>
                     </a>

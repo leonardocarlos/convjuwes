@@ -44,7 +44,7 @@ $eventoQuery = consultaDados("select * from evento order by data_inicio ASC");
 <script type="text/javascript">
     function excluir(id){
         if(confirm("Você tem certeza que deseja EXCLUIR o evento?") == true){
-          window.location = '?page=editevento&acao=excluir&id=' + id;
+          window.location = '?p=editevento&acao=excluir&id=' + id;
         }
     }
 </script>
@@ -73,7 +73,7 @@ $eventoQuery = consultaDados("select * from evento order by data_inicio ASC");
      <th><?php if($evento['ativo'] == 1){echo "<span class='verde-negrito'>Sim</span>";}else{echo "<span class='vermelho-negrito'>Não</span>";};?></th>
      <th>
         <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="get">
-        <a class="btn btn-small btn-success" href="?page=editevento&acao=editar&id=<?php echo $evento['id']; ?>" title="Clique para Editar"><i class="icon-edit icon-white"></i></a>
+        <a class="btn btn-small btn-success" href="?p=editevento&acao=editar&id=<?php echo $evento['id']; ?>" title="Clique para Editar"><i class="icon-edit icon-white"></i></a>
        <a class="btn btn-small btn-success" href="javascript:func()" onclick="excluir('<?php echo $evento['id']; ?>')" onclick="excluir" title="Clique para Excluir"><i class="icon-remove icon-white"></i></a>
             <?php echo '<input type="hidden" name="id" value="' . $evento['id'] . '" formmethod="get" />'; ?>
         <input type="hidden" name="acao" value="<?php echo $evento['id']; ?>" formmethod="get"/>

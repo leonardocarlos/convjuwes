@@ -30,7 +30,8 @@ function select($nome, $valores, $selecionado =''){ //
     foreach ($valores as $key => $value) { // Varre todas as informações do array valores
         $saida .= '<option value="' .$value .'"'; //
         if($value == $selecionado){  // Ser o valor for igual ao selecionado
-            $saida .= ' selected="selected"'; // então então exiba-o
+            //$saida .= ' selected="selected"'; // então então exiba-o
+            $saida .= ' active'; // então então exiba-o
         }
         $saida .= '>' . $key .'</option>';
     }

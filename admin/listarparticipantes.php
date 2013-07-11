@@ -26,7 +26,7 @@ if($_SESSION['SSnivel']!= $nivel_necessario){
    $excel->writeLine($myArr);
    
 */
-$totalQuery = consultaDados("select * from participantes");
+$totalQuery = consultaDados("select * from inscritos");
 
 // defina o número de registros exibidos por página
 $limite = 50;
@@ -45,12 +45,12 @@ $pagina = $_GET["pagina"];
 // Faça a continha na calculadora que você entenderá minha fórmula
 $inicio = $pagina * $limite - $limite;
 
-$participantesQuery = consultaDados("select * from participantes order by nome asc limit $inicio, $limite");
+$participantesQuery = consultaDados("select * from inscritos order by nome asc limit $inicio, $limite");
         
     if(isset($_GET['acao'])){
         $id = htmlspecialchars($_GET['id'], ENT_QUOTES);
     if($_GET['acao'] == 'excluir'){
-        consultaDados("delete from participantes where id = '$id'");
+        consultaDados("delete from inscritos where id = '$id'");
         $excluir = 'ok';
     }
     }    
@@ -84,7 +84,7 @@ $participantesQuery = consultaDados("select * from participantes order by nome a
 <script type="text/javascript">
     function excluir(id){
         if(confirm("Você tem certeza que deseja EXCLUIR o participante?") == true){
-          window.location = '?page=listarparticipantes&acao=excluir&id=' + id;          
+          window.location = '?p=listarparticipantes&acao=excluir&id=' + id;          
         }
     }
 </script>
@@ -111,8 +111,8 @@ $participantesQuery = consultaDados("select * from participantes order by nome a
      <tr>
          <th width="40%">Participantes</th>
          <th width="25%">Email</th>
-         <th width="10%">Forma Pagto</th>
-         <th width="10%">Pagamento Confirmado</th>
+         <th width="10%">Alterar Foto</th>
+         <th width="10%">Alterar Senha</th>
          <th width="15%">Editar/Deletar</th>
      </tr>
      </thead>
@@ -121,11 +121,11 @@ $participantesQuery = consultaDados("select * from participantes order by nome a
      <tr>        
      <th><?php echo $participante['nome'];?></th>
      <th class="text-left"><?php echo $participante['email'];?></th>
-     <th class="text-left"><?php echo $participante['tipo_pagto'];?></th>       
-     <th><?php if($participante['confirma_pagto'] == 1){echo "<span class='verde-negrito'>Não</span>";}else{echo "<span class='vermelho-negrito'>Sim</span>";};?></th>
+     <th class="text-left"><?php //echo $participante['tipo_pagto'];?></th>       
+     <th><?php //if($participante['confirma_pagto'] == 1){echo "<span class='verde-negrito'>Não</span>";}else{echo "<span class='vermelho-negrito'>Sim</span>";};?></th>
      <th>
         <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="get">
-        <a class="btn btn-small btn-success" href="?page=editparticipante&acao=editar&id=<?php echo $participante['id']; ?>" title="Clique para Editar"><i class="icon-edit icon-white"></i></a>
+        <a class="btn btn-small btn-success" href="?p=editusuario&acao=editar&id=<?php echo $participante['id']; ?>" title="Clique para Editar"><i class="icon-edit icon-white"></i></a>
        <a class="btn btn-small btn-success" href="javascript:func()" onclick="excluir('<?php echo $participante['id']; ?>')" onclick="excluir" title="Clique para Excluir"><i class="icon-remove icon-white"></i></a>      
             <?php echo '<input type="hidden" name="id" value="' . $participante['id'] . '" formmethod="get" />'; ?>
         <input type="hidden" name="acao" value="<?php echo $participante['id']; ?>" formmethod="get"/>
