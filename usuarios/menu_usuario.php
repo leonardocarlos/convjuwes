@@ -29,9 +29,8 @@
                       <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                       <li><a href="?p=fazer_inscricao">Fazer Inscrição</a></li>
-                       <li><a href="?p=efetua_pagamento">Efetuar Pagamento</a></li>
-                       <li><a href="?p=listarinscricoes">Confirmar Pagamento</a></li>
+                       <li><a href="?p=fazer_inscricao">Fazer Inscrição</a></li>                       
+                       <li><a href="?p=listarinscricoes">Listar Inscrições</a></li>                       
                     </ul>
                   </li>                    
 <!--                  <li class="dropdown">

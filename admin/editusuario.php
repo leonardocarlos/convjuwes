@@ -27,6 +27,7 @@ if(isset($_POST['editar'])){
         pastor = '{$form['pastor']}',
         distrito = '{$form['distrito']}',
         regiao = '{$form['regiao']}',
+        delegado = '{$form['delegado']}',
         login = '{$form['login']}',
         senha = '{$form['senha']}'
       where 
@@ -35,7 +36,7 @@ if(isset($_POST['editar'])){
     //$mensagem = 'Dados Atualizados com sucesso!';
 echo "<script>
         alert('Dados Atualizado com Sucesso!');
-        window.location.href ='" . URL_BASE . "usuarios/painel_usuario.php?p=perfil';
+        window.location.href ='" . URL_BASE . "admin/index2.php?p=listarparticipantes';
         </script>";        
 }
  ?>
@@ -44,15 +45,15 @@ echo "<script>
     <div class="row">
 <h3>Area do Usuário</h3>
 
-<?php if(!empty($mensagem)) {echo $mensagem; } ?>    
+<?php if(!empty($mensagem)) {echo $mensagem; } //echo $usuario['foto'];?>    
 
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>">        
 
 <?php while($usuario = mysql_fetch_array($usuariosQuery)) {?>
 <div class="span3">
-    <a href="?p=fotos" title="Clique para Alterar a Foto">
+    <a href="#" title="Clique para Alterar a Foto">
         <?php if(!empty($usuario['foto'])){
-          echo '<img src='.URL_BASE . 'imagens/fotos_usuarios/'.$usuario['foto'].' class="img-polaroid" widht="200px" alt="">';
+          echo '<img src="'.URL_BASE . 'imagens/fotos_usuarios/'.$usuario['foto'].'" class="img-polaroid" widht="200px" alt="">';
         }else{
           echo '<img src="http://placehold.it/200x200/bbb/&text=Your%20Logo" class="img-polaroid" alt="">';
         }
@@ -76,7 +77,7 @@ echo "<script>
 <div class="controls-row">
     <div class="span2">
     <label>Data Nascimento:</label>
-    <input type="text" name="data_nasc" class="span2" id="datepicker" value="<?php echo formataData($usuario['data_nasc'], 'd/m/Y') /*$usuario['data_nasc'] */;?>"/>
+    <input type="text" name="data_nasc" class="span2" id="datepicker" value="<?php echo /* formataData($usuario['data_nasc'], 'd-m-Y')*/ $usuario['data_nasc'] ;?>"/>
     </div>
     <div class="span2">
     <label>Sexo:</label>
@@ -167,6 +168,14 @@ echo "<script>
 </div> <!-- controls-row -->
 
 <div class="controls-row">  
+	<div class="span1">
+		<label>Delegado:</label>
+		<select name="delegado" id="" class="span1">
+                <option value="<?php echo $usuario['delegado'] ;?>" active><?php echo $usuario['delegado'] ;?></option>                    
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+		</select>
+    </div>      
 	<div class="span2">
 		<label>Área de Atuação:</label>
 		<select name="area_atuacao" id="" class="span2">
@@ -210,7 +219,8 @@ echo "<script>
                 <option value="Região Européia">Região Européia</option>
 
 		</select>
-    </div>      
+    </div>     
+  
 </div> <!-- controls-row -->
 
 <div class="controls-row">

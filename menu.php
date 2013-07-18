@@ -84,7 +84,7 @@ para que seja enviada um nova senha!</p>
     </div>
     
   <div class="modal-footer">
-      <small class="preto pull-left">Se você participou do Fórum <a href="#forgotpassword" data-toggle="tab">AQUI</a> e <br> digite seu email para receber nova senha</small>
+      <small class="preto pull-left">Se você participou do Fórum clique <a href="#forgotpassword" data-toggle="tab">AQUI</a> e <br> digite seu email para receber nova senha</small>
       <a href="?p=cadastro#inscreva" class="btn btn-primary">Inscrição</a>
   </div>
 </div>

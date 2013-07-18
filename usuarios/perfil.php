@@ -26,7 +26,8 @@ if(isset($_POST['editar'])){
         igreja = '{$form['igreja']}',
         pastor = '{$form['pastor']}',
         distrito = '{$form['distrito']}',
-        regiao = '{$form['regiao']}'
+        regiao = '{$form['regiao']}',
+        delegado = '{$form['delegado']}'
       where 
       id = $id
      ");
@@ -80,8 +81,8 @@ echo "<script>
     <label>Sexo:</label>
     <select name="sexo" id="" class="span2">
             <option value="<?php echo $usuario['sexo'] ;?>" active><?php echo $usuario['sexo'] ;?></option>
-            <option value="F">Feminino</option>
-            <option value="M">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Masculino">Masculino</option>
         </select>
     </div>
 	<div class="span3">
@@ -208,7 +209,15 @@ echo "<script>
                 <option value="Região Européia">Região Européia</option>
 
 		</select>
-    </div>      
+    </div>  
+	<div class="span1">
+		<label>Delegado:</label>
+		<select name="delegado" id="" class="span1">
+                <option value="<?php echo $usuario['delegado'] ;?>" active><?php echo $usuario['delegado'] ;?></option>                    
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+		</select>
+    </div>       
 </div> <!-- controls-row -->
 
 <div class="controls-row">

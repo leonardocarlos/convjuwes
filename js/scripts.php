@@ -11,7 +11,7 @@
 <script>
   $(function() {
     $( "#datepicker" ).datepicker({
-		dateFormat: 'dd/mm/yy',
+		dateFormat: 'yy-mm-dd',
         changeMonth: true,
         changeYear: true,
 		dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
@@ -24,7 +24,7 @@
 
   $(function() {
     $( "#datepicker1" ).datepicker({
-    dateFormat: 'dd/mm/yy',
+    dateFormat: 'yy-mm-dd',
         changeMonth: true,
         changeYear: true,
     dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
@@ -36,7 +36,7 @@
   });
 
         $(document).ready(function(){
-              $("input.dinheiro").maskMoney({showSymbol:true, symbol:"", decimal:",", thousands:"."});
+              $("input.dinheiro").maskMoney({showSymbol:true, symbol:"", decimal:".", thousands:""});
         });
 
 $(document).ready(function(){

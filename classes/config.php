@@ -14,7 +14,7 @@ if(!defined('URL_BASE')){
     
     
     }elseif($_SERVER['SERVER_NAME'] == "juventudewesleyana6.com.br" || $_SERVER['SERVER_NAME'] == "www.juventudewesleyana6.com.br"){
-    define('URL_BASE', "http://www.juventudewesleyana6.com.br/convjuwes/", true); 
+    define('URL_BASE', "http://www.juventudewesleyana6.com.br/", true); 
     $conexao = new ConexaoMysql('mysql04.hstbr.net','juwes6','123456','forum');
     $conexao->conectar();
     $conexao->selecionarBD();

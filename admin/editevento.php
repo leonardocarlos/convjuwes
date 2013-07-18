@@ -29,12 +29,19 @@ if(isset($_POST['editar'])){
         $form[$campo] = htmlspecialchars($_POST[$campo], ENT_QUOTES);
     }
     consultaDados("update evento set
+        codigo_evento = '{$form['codigo_evento']}',
         nome_evento = '{$form['nome_evento']}',
         local = '{$form['local']}',
         data_inicio = '{$form['data_inicio']}',
         data_fim = '{$form['data_fim']}',
         valor_deposito = '{$form['valor_deposito']}',
         valor_cartao = '{$form['valor_cartao']}',
+        codigo1 = '{$form['codigo1']}',
+        desconto1 = '{$form['desconto1']}',
+        codigo2 = '{$form['codigo2']}',
+        desconto2 = '{$form['desconto2']}',
+        codigo3 = '{$form['codigo3']}',
+        desconto3 = '{$form['desconto3']}',
         ativo = '{$form['ativo']}'
       where 
       id = $id
@@ -63,6 +70,12 @@ echo "<script>
 <?php while($evento = mysql_fetch_array($eventoQuery)) {?>    
 
     <fieldset>
+<div class="controls-row">
+    <div class="span5">
+        <label>Codigo Evento:</label>
+        <input type="text" name="codigo_evento" required class="span2" value="<?php echo $evento['codigo_evento'] ;?>"/> <small> Máximo 10 caracteres</small>
+    </div>
+</div>  <!-- controls-row -->  
 <div class="controls-row">
     <div class="span6">
         <label>Nome Evento:</label>
@@ -96,6 +109,44 @@ echo "<script>
         <input type="text" name="valor_cartao" class="span2 dinheiro" required id="" value="<?php echo $evento['valor_cartao'] ;?>"><small>Somente número</small>
     </div>
 </div> <!-- controls-row -->
+<br>
+<div class="controls-row">
+    <div class="span5">
+        <p>Digite o valor da porcentagem sem o sinal de % </p>
+    </div> 
+</div><!-- controls-row -->
+<div class="controls-row">
+    
+	<div class="span1">          
+    	<label>Código 1:</label>
+        <input type="text" name="codigo1" class="span1"  id="" value="<?php echo $evento['codigo1'] ;?>">
+    </div> 
+    <div class="span1">
+        <label>Valor 1:</label>        
+    	<input type="text" name="desconto1" class="span1 dinheiro"  id="" value="<?php echo $evento['desconto1'] ;?>">
+    </div>
+</div><!-- controls-row -->
+<div class="controls-row">    
+    <div class="span1">
+        <label>Código 2:</label>
+        <input type="text" name="codigo2" class="span1"  id="" value="<?php echo $evento['codigo2'] ;?>"> 
+    </div> 
+    <div class="span1">
+        <label>Valor 2:</label>        
+        <input type="text" name="desconto2" class="span1 dinheiro"  id="" value="<?php echo $evento['desconto2'] ;?>">
+    </div>
+</div><!-- controls-row -->
+<div class="controls-row">    
+    <div class="span1">
+        <label>Código 3:</label>
+        <input type="text" name="codigo3" class="span1"  id="" value="<?php echo $evento['codigo3'] ;?>">
+    </div> 
+    <div class="span1">
+        <label>Valor 3:</label>
+        <input type="text" name="desconto3" class="span1 dinheiro"  id="" value="<?php echo $evento['desconto3'] ;?>">
+    </div>    
+</div> <!-- controls-row -->
+
 
 <div class="controls-row">
     <div class="span2">

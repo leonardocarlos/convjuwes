@@ -57,15 +57,15 @@ include 'classes/funcoes.php';
         <h4>Investimento</h4>
         <h4>R$ 180,00 - Parcelado em até 12 vezes</h4>
         <div class="btn-group">
-  <!--      <a class="btn btn-inverse btn-large" data-toggle="modal" href="#myModal"><i class="icon-ok-sign"></i> Inscreva-se</a> -->
+        <a class="btn btn-inverse btn-large" data-toggle="modal" href="#myModal"><i class="icon-ok-sign"></i> Inscreva-se</a> 
 
-<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+<!-- INICIO FORMULARIO BOTAO PAGSEGURO --
 <form target="pagseguro" action="https://pagseguro.uol.com.br/checkout/v2/cart.html?action=add" method="post">
-<!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+<!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO --
 <input type="hidden" name="itemCode" value="2AF6C1FBA5A5CACCC429EF825CDF234E" />
 <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/99x61-pagar-azul-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
 </form>
-<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+<-- FINAL FORMULARIO BOTAO PAGSEGURO -->
 
       	</div>
         </div> <!-- span6 -->

@@ -2,8 +2,10 @@
 //include 'classes/funcoes.php';
 require_once("phpmailer/class.phpmailer.php"); //caminho do arquivo da classe do phpmailer
 
+$distritoQuery = consultaDados("select * from distritos order by nome ASC");
+
 if(isset($_POST['cadastrar'])){
- 
+
         $nome = $_POST['nome'];
         $cpf = $_POST['cpf'];
         $data_nasc = $_POST['data_nasc'];
@@ -23,6 +25,7 @@ if(isset($_POST['cadastrar'])){
         $pastor = $_POST['pastor'];
         $distrito = $_POST['distrito'];
         $regiao = $_POST['regiao'];
+        $delegado = $_POST['delegado'];
         $login = $_POST['login'];
         $senha = $_POST['senha'];
         $confirmaSenha = $_POST['confirmaSenha'];
@@ -72,6 +75,7 @@ if(isset($_POST['cadastrar'])){
             pastor,
             distrito,
             regiao,
+            delegado,
             login,
             senha
             ) values (
@@ -94,6 +98,7 @@ if(isset($_POST['cadastrar'])){
             '$pastor',
             '$distrito',
             '$regiao',
+            '$delegado',
             '$login',
             '$senha'
             )");
@@ -129,37 +134,37 @@ $mail->IsHTML(true); // envio como HTML se 'true'
 $mail->Subject = "Solicitação de Cadastro - Juwes - 6ª Região";
 
 $mail->Body = 'A paz: <b>'.$nome. '</b>';
-$mail->Body .= '<br /><br />';
-$mail->Body .= 'Seu cadastro foi efetuado com sucesso use seu email ou login <br /> para acessar o sistema e efetuar sua inscrição.<br />';
-$mail->Body .= '<br />';
+$mail->Body .= '<br><br>';
+$mail->Body .= 'Seu cadastro foi efetuado com sucesso use seu email ou login <br /> para acessar o sistema e efetuar sua inscrição.<br>';
+$mail->Body .= '<br>';
 $mail->Body .= 'Email: ' . $email;
-$mail->Body .= '<br />';
+$mail->Body .= '<br>';
 $mail->Body .= 'Login: ' . $login;
-$mail->Body .= '<br />';
+$mail->Body .= '<br>';
 $mail->Body .= 'Senha: ' . $senha;
-$mail->Body .= '<br /><br />';
+$mail->Body .= '<br><br>';
 $mail->Body .= 'Clique aqui para acessar: <a href="http://juventudewesleyana6.com.br">juventudewesleyana6.com.br</a>';
-$mail->Body .= '<br /><br />';
+$mail->Body .= '<br><br>';
 $mail->Body .= 'Webmaster - #JUWES6';
-$mail->Body .= '<br />';
+$mail->Body .= '<br>';
 $mail->Body .= 'E-mail: <a href="mailto:eventos@juventudewesleyana6.com.br">eventos@juventudewesleyana6.com.br</a>';
-$mail->Body .= '<br />';
+$mail->Body .= '<br>';
 $mail->Body .= 'Redes: <a href="http://facebook.com/juwes6">facebook.com/juwes6</a>';
 
 $mail->AltBody = 'A paz: <b>'.$nome. '</b>';
-$mail->AltBody .= '<br /><br />';
-$mail->AltBody .= 'Seu cadastro foi efetuado com sucesso use seu email ou login <br /> para acessar o sistema e efetuar sua inscrição.<br />';
-$mail->AltBody .= '<br />';
+$mail->AltBody .= '<br><br>';
+$mail->AltBody .= 'Seu cadastro foi efetuado com sucesso use seu email ou login <br /> para acessar o sistema e efetuar sua inscrição.<br>';
+$mail->AltBody .= '<br>';
 $mail->AltBody .= 'Email: ' . $email;
-$mail->AltBody .= '<br />';
+$mail->AltBody .= '<br>';
 $mail->AltBody .= 'Login: ' . $login;
-$mail->AltBody .= '<br />';
+$mail->AltBody .= '<br>';
 $mail->AltBody .= 'Senha: ' . $senha;
-$mail->AltBody .= '<br /><br />';
+$mail->AltBody .= '<br><br>';
 $mail->AltBody .= 'Clique aqui para acessar: <a href="http://juventudewesleyana6.com.br">juventudewesleyana6.com.br</a>';
-$mail->AltBody .= '<br /><br />';
+$mail->AltBody .= '<br><br>';
 $mail->AltBody .= 'Webmaster - #JUWES6';
-$mail->AltBody .= '<br />';
+$mail->AltBody .= '<br>';
 $mail->AltBody .= 'E-mail: <a href="mailto:eventos@juventudewesleyana6.com.br">eventos@juventudewesleyana6.com.br</a>';
 $mail->AltBody .= '<br />';
 $mail->AltBody .= 'Redes: <a href="http://facebook.com/juwes6">facebook.com/juwes6</a>';
@@ -318,10 +323,11 @@ window.location.href ='" . URL_BASE . "';
 		<input type="text" name="pastor" class="span3" value=""/>
 	</div>
 	<div class="span2">
-		<label>Distrito:</label>
+		<label>Distrito:</label>                
 		<select name="distrito" id="" class="span2">
-                <option value="Mesquita">Mesquita</option>
-                <option value="Nova Iguaçu">Nova Iguaçu</option>
+                <?php while($distrito = mysql_fetch_array($distritoQuery)){?>                    
+                <option value="<?php echo $distrito['nome'] ?>"><?php echo $distrito['nome'] ?></option>
+                <?php }?>
 		</select>
     </div>
 	<div class="span2">
@@ -338,7 +344,14 @@ window.location.href ='" . URL_BASE . "';
                 <option value="Outra">Outra</option>
 
 		</select>
-    </div>      
+    </div>    
+	<div class="span1">
+		<label>Delegado:</label>
+		<select name="delegado" id="" class="span1">               
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+		</select>
+    </div>       
 </div> <!-- controls-row -->
 
 <div class="controls-row">

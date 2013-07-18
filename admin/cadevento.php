@@ -13,6 +13,20 @@ if(isset($_POST['enviar'])){
         $form[$campo] = htmlspecialchars($_POST[$campo], ENT_QUOTES);
     }
     $mensagem =''; */
+    if(strlen($nome_evento) >10 ){
+    $mensagem .= "
+		<div class='alert alert-error'>
+         <a class='close' data-dismiss='alert' href='#'>x</a>Limite de Caracteres ultrapassou! Máximo 10.
+         </div>
+	";
+    }
+    if(strlen($nome_evento) <2 ){
+    $mensagem .= "
+		<div class='alert alert-error'>
+         <a class='close' data-dismiss='alert' href='#'>x</a>Código do Evento Obrigatório!
+         </div>
+	";
+    }      
     if(strlen($nome_evento) <2){
     $mensagem .= "
 		<div class='alert alert-error'>
@@ -22,20 +36,34 @@ if(isset($_POST['enviar'])){
     }
     if(empty($mensagem)){
        insereDados("insert INTO evento(
+   	codigo_evento,
    	nome_evento,
 	data_inicio,
     data_fim,
     valor_deposito,
     valor_cartao,
     local,
+    codigo1,
+    desconto1,
+    codigo2,
+    desconto2,
+    codigo3,
+    desconto3,
     ativo
 	) values (
+        '$codigo_evento',
 	'$nome_evento',
 	'$data_inicio',
     '$data_fim',
     '$valor_deposito',
     '$valor_cartao',
     '$local',
+    '$codigo1',
+    '$desconto1',
+    '$codigo2',
+    '$desconto2',
+    '$codigo3',
+    '$desconto3',
     '$ativo'
 	)");
 
@@ -55,6 +83,12 @@ if(isset($_POST['enviar'])){
 
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 <fieldset>
+<div class="controls-row">
+    <div class="span4">
+        <label>Codigo Evento:</label>
+        <input type="text" name="codigo_evento" required class="span1" value=""/> <small> Máximo 10 caracteres</small>
+    </div>
+</div>  <!-- controls-row -->    
 <div class="controls-row">
     <div class="span6">
         <label>Nome Evento:</label>
@@ -88,7 +122,43 @@ if(isset($_POST['enviar'])){
         <input type="text" name="valor_cartao" class="span2 dinheiro" required id=""><small>Somente número</small>
     </div>
 </div> <!-- controls-row -->
-
+<br>
+<div class="controls-row">
+    <div class="span5">
+        <p>Digite o valor da porcentagem sem o sinal de % </p>
+    </div> 
+</div><!-- controls-row -->
+<div class="controls-row">
+    
+	<div class="span1">          
+    	<label>Código 1:</label>
+        <input type="text" name="codigo1" class="span1" id="">
+    </div> 
+    <div class="span1">
+        <label>Valor 1:</label>        
+    	<input type="text" name="desconto1" class="span1 dinheiro" id="">
+    </div>
+</div><!-- controls-row -->
+<div class="controls-row">    
+    <div class="span1">
+        <label>Código 2:</label>
+        <input type="text" name="codigo2" class="span1" id=""> 
+    </div> 
+    <div class="span1">
+        <label>Valor 2:</label>        
+        <input type="text" name="desconto2" class="span1 dinheiro"  id="">
+    </div>
+</div><!-- controls-row -->
+<div class="controls-row">    
+    <div class="span1">
+        <label>Código 3:</label>
+        <input type="text" name="codigo3" class="span1"  id="">
+    </div> 
+    <div class="span1">
+        <label>Valor 3:</label>
+        <input type="text" name="desconto3" class="span1 dinheiro"  id="">
+    </div>    
+</div> <!-- controls-row -->
 <div class="controls-row">
     <div class="span2">
     <label>Ativar:</label>
