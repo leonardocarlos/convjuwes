@@ -6,8 +6,26 @@ if(isset($_POST['buscar'])){
   
 $id_evento = $_POST['evento'];
 
-if(isset($_POST['tipo_pagamento'])){
+if($_POST['tipo_pagamento'] == ''){
+
+    $inscritoQuery = consultaDados("select 
+        i.*,
+        e.*,
+        u.*
+    from 
+        inscricoes i,
+        evento e,
+        inscritos u
+    WHERE
+        i.id_inscrito = u.id and
+        i.id_evento = e.id and          
+        i.id_evento = '$id_evento' and    
+        e.ativo = 1
+    order by
+        u.nome            
+    ");  
     
+}else{
 $inscritoQuery = consultaDados("select 
         i.*,
         e.*,
@@ -26,25 +44,6 @@ $inscritoQuery = consultaDados("select
     order by
         u.nome            
     ");
-
-}else{
-$inscritoQuery = consultaDados("select 
-        i.*,
-        e.*,
-        u.*
-    from 
-        inscricoes i,
-        evento e,
-        inscritos u
-    WHERE
-        i.id_inscrito = u.id and
-        i.id_evento = e.id and 
-    and       
-        i.id_evento = '$id_evento' and
-        e.ativo = 1
-    order by
-        u.nome            
-    ");    
 }
     if(isset($_GET['acao'])){
         $id = htmlspecialchars($_GET['id'], ENT_QUOTES);
@@ -97,14 +96,31 @@ $total = mysql_num_rows($inscritoQuery);
      </tr>
      </thead>
      <tbody>
-     <?php while($participante = mysql_fetch_array($inscritoQuery)) {  ?>
+     <?php while($participante = mysql_fetch_array($inscritoQuery)) {  
+         
+         if($participante['codigo_desconto'] == $participante['codigo1']){
+             //$percentual = $inscricao['desconto1'] / 100.0; // 15% 
+             $valordesconto = $participante['valor']-$participante['desconto1'];
+         }elseif($participante['codigo_desconto'] == $participante['codigo2']){
+             $valordesconto = $participante['valor']-$participante['desconto2'];
+         }elseif($participante['codigo_desconto'] == $participante['codigo3']){
+                 $valordesconto = $participante['valor']-$participante['desconto3'];
+         }else{
+            $valordesconto = $participante['valor'] - 0;
+         } 
+         ?>
      <tr>        
      <th><?php echo $participante['nome'];?></th>
      <th class="text-left"><?php echo $participante['email'];?></th>
+     
      <th class="text-left"><?php echo $participante['quantidade'];?></th>
-     <th class="text-left">R$ <?php  $resultado = $participante['valor']*$participante['quantidade']; echo number_format($resultado,2,",",".");?></th>
+     
+     <th class="text-left">R$ <?php  $resultado = $valordesconto*$participante['quantidade']; echo number_format($resultado,2,",",".");?></th>
+     
      <th class="text-left"><?php echo $participante['tipo_pagamento'];?></th>       
+     
      <th><?php if($participante['pagto_confirma'] == 0){echo "<span class='verde-negrito'>Não</span>";}else{echo "<span class='vermelho-negrito'>Sim</span>";};?></th>
+     
      <th>
         <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="get">
 <!--        <a class="btn btn-small btn-success" href="?p=editusuario&acao=editar&id=<?php // echo $participante['id']; ?>" title="Clique para Editar"><i class="icon-edit icon-white"></i></a> -->
@@ -127,6 +143,7 @@ $total = mysql_num_rows($inscritoQuery);
 <?php //echo "$prev_link | $next_link"; ?>
 
 </div>
+    
     <div class="span4 pull-right">
  <?PHP   //  $excel->close();
   //  echo "<a href=\"listagem_geral.xls\" class=\"btn btn-primary\" target=\"_blank\">Baixar Planilha</a>";

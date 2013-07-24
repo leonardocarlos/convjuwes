@@ -43,7 +43,8 @@ echo "<script>
     
 <div class="well well-small display">
     <div class="row">
-<h3>Area do Usuário</h3>
+        
+
 
 <?php if(!empty($mensagem)) {echo $mensagem; } //echo $usuario['foto'];?>    
 
@@ -51,6 +52,7 @@ echo "<script>
 
 <?php while($usuario = mysql_fetch_array($usuariosQuery)) {?>
 <div class="span3">
+    <h3>Area do Usuário</h3>
     <a href="#" title="Clique para Alterar a Foto">
         <?php if(!empty($usuario['foto'])){
           echo '<img src="'.URL_BASE . 'imagens/fotos_usuarios/'.$usuario['foto'].'" class="img-polaroid" widht="200px" alt="">';

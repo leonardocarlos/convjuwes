@@ -31,6 +31,7 @@
                     <ul class="dropdown-menu">
                        <li><a href="?p=fazer_inscricao">Fazer Inscrição</a></li>                       
                        <li><a href="?p=listarinscricoes">Listar Inscrições</a></li>                       
+                       <li><a href="?p=confirma_inscricoes">Confirmar Inscrições</a></li>                       
                     </ul>
                   </li>                    
 <!--                  <li class="dropdown">

@@ -98,8 +98,8 @@ $participantesQuery = consultaDados("select * from inscritos order by nome asc l
     </section> <br />    
 </div>
     <div class="span4 pull-right">
- <?PHP     $excel->close();
-    echo "<a href=\"listagem_geral.xls\" class=\"btn btn-primary\" target=\"_blank\">Baixar Planilha</a>";
+ <?PHP   //  $excel->close();
+  //  echo "<a href=\"listagem_geral.xls\" class=\"btn btn-primary\" target=\"_blank\">Baixar Planilha</a>";
 ?>
  <input type="button" value="Imprimir Relatório" onclick="window.print()" class="btn btn-primary"/>
 </div>
@@ -111,8 +111,6 @@ $participantesQuery = consultaDados("select * from inscritos order by nome asc l
      <tr>
          <th width="40%">Participantes</th>
          <th width="25%">Email</th>
-         <th width="10%">Alterar Foto</th>
-         <th width="10%">Alterar Senha</th>
          <th width="15%">Editar/Deletar</th>
      </tr>
      </thead>
@@ -120,9 +118,7 @@ $participantesQuery = consultaDados("select * from inscritos order by nome asc l
      <?php while($participante = mysql_fetch_array($participantesQuery)) {  ?>
      <tr>        
      <th><?php echo $participante['nome'];?></th>
-     <th class="text-left"><?php echo $participante['email'];?></th>
-     <th class="text-left"><?php //echo $participante['tipo_pagto'];?></th>       
-     <th><?php //if($participante['confirma_pagto'] == 1){echo "<span class='verde-negrito'>Não</span>";}else{echo "<span class='vermelho-negrito'>Sim</span>";};?></th>
+     <th class="text-left"><?php echo $participante['email'];?></th>      
      <th>
         <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="get">
         <a class="btn btn-small btn-success" href="?p=editusuario&acao=editar&id=<?php echo $participante['id']; ?>" title="Clique para Editar"><i class="icon-edit icon-white"></i></a>
@@ -146,8 +142,8 @@ $participantesQuery = consultaDados("select * from inscritos order by nome asc l
 
 </div>
     <div class="span4 pull-right">
- <?PHP     $excel->close();
-    echo "<a href=\"listagem_geral.xls\" class=\"btn btn-primary\" target=\"_blank\">Baixar Planilha</a>";
+ <?PHP   //  $excel->close();
+  //  echo "<a href=\"listagem_geral.xls\" class=\"btn btn-primary\" target=\"_blank\">Baixar Planilha</a>";
 ?>
  <input type="button" value="Imprimir Relatório" onclick="window.print()" class="btn btn-primary"/>
 </div>

@@ -1,6 +1,6 @@
 <?php
 
-$id = $_SESSION['SSusuario_id'];
+$id = $_POST['id_inscrito'];
 
 require_once('../phpmailer/class.phpmailer.php'); //caminho do arquivo da classe do phpmailer
 // include("phpmailer/class.smtp.php");
@@ -251,7 +251,7 @@ $deposito = $evento['valor_deposito'];
 
 <div class="well well-small display">
      <h3>Inscrição no Eventos</h3>
-     <?php if(!empty($mensagem)) {echo $mensagem; } //echo $_SESSION['SSemail']; ?> 
+     <?php if(!empty($mensagem)) {echo $mensagem; } echo $_POST['id_inscrito']; ?> 
      <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 <div class="controls-row">     
     <div class="span6">

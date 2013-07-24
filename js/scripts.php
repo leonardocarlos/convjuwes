@@ -1,4 +1,5 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="<?php echo URL_BASE ;?>js/jquery-1.9.1.js"></script>
 <script src="<?php echo URL_BASE ;?>bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo URL_BASE ;?>bootstrap/js/bootstrap-tooltip.js"></script>
 <script src="<?php echo URL_BASE ;?>js/jquery-ui-1.10.1.custom.js"></script>

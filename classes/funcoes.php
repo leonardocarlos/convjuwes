@@ -55,12 +55,16 @@ function formataData($data, $formato = 'd-m-y'){
     return date($formato, mktime($hora, $minuto, $segundo, $mes, $dia, $ano));
 }
 
-function session_checker(){
+function protegePagina(){
  
     if (!isset($_SESSION['SSusuario_id'])){
- 
-        header ("Location:index.php");
-        exit(); 
+    //Destrói a sessão por segurança
+    session_destroy();
+    
+    echo "<script>
+        alert('Você não tem permissão para acessar está Área!');
+        window.location.href ='" . URL_BASE . "admin/index.php';
+        </script>";
  
     }
  

@@ -76,7 +76,7 @@ if(!isset($_SESSION['SSusuario_id']) or ($_SESSION['SSnivel']!= $nivel_necessari
                     </a>
                     <ul class="dropdown-menu">
                        <li><a href="?p=listarinscritos">Listar Inscritos</a></li>
-                       <li><a href="#">Confirmar Pagamento</a></li>
+                       <li><a href="?p=listar_pagamento">Confirmar Pagamento</a></li>
                     </ul>
                   </li>                  
                   <li class="dropdown">
